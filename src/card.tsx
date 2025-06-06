@@ -1,8 +1,7 @@
 interface Opts {
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	// biome-ignore lint/suspicious/noExplicitAny: I don't know how to exactly type this but hey, it works.
 	bg: any;
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	avatar: any;
+	avatar: string;
 	username: string;
 	currentXp: number;
 	maxXp: number;

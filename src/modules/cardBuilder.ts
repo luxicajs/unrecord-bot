@@ -13,8 +13,8 @@ interface Opts {
 }
 
 // Load fonts
-const geistFont = await Bun.file("./assets/Geist-Regular.ttf").arrayBuffer();
-const geistBoldFont = await Bun.file("./assets/Geist-Bold.ttf").arrayBuffer();
+const geistFont = await Bun.file("./src/assets/Geist-Regular.ttf").arrayBuffer();
+const geistBoldFont = await Bun.file("./src/assets/Geist-Bold.ttf").arrayBuffer();
 
 export default async (data: Opts) => {
     // Start measuring the amount of time the rank card takes.
@@ -22,7 +22,7 @@ export default async (data: Opts) => {
 
     // Fetch the background the user has set.
     const bg = await Bun.file(
-        `./assets/card${data.card + 1}.png`,
+        `./src/assets/card${data.card + 1}.png`,
     ).arrayBuffer();
 
     // Generate the svg from "card.tsx"
