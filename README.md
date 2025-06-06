@@ -1,15 +1,8 @@
-# unrecord-oss
+# Unrecord Leveling Bot v3
 
-To install dependencies:
+## > ⚠️ This is still being worked on and is not currently live anywhere.
+### > Please do not deploy this bot anywhere as of now.
 
-```bash
-bun install
-```
+This is a new version of the leveling bot, running on cleaner code, and now it's open source!
 
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.2.16. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Tutorial on how to set this up in your own server is coming soon.
