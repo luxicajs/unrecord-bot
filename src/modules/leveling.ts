@@ -2,9 +2,9 @@ import type { Message } from "discord.js";
 import { bot, prisma } from "..";
 import levelCalculate from "./levelCalculate";
 
-const minXp = Bun.env.MIN_XP;
-const maxXp = Bun.env.MAX_XP;
-const xpTimeout = Bun.env.XP_TIMEOUT;
+const minXp = Number(Bun.env.MIN_XP);
+const maxXp = Number(Bun.env.MAX_XP);
+const xpTimeout = Number(Bun.env.XP_TIMEOUT);
 
 const recentUsers = new Set();
 
@@ -19,7 +19,7 @@ export default async (message: Message) => {
     recentUsers.add(message.author.id);
 
     // Remove the user from the timeout after a given time.
-    setTimeout(() => recentUsers.delete(message.author.id), Bun.env.XP_TIMEOUT);
+    setTimeout(() => recentUsers.delete(message.author.id), xpTimeout);
 
     // Let's see if the user exists in our database.
     let user = await prisma.user.findUnique({
