@@ -63,6 +63,8 @@ export default async (message: Message) => {
 
     if (!levelingChannel?.isSendable()) return;
 
+    // Send a level up message and grant a role if it matches the following cases.
+
     switch (user.level + 1) {
         case 5:
             message.member?.roles.add("1101265905247338607");

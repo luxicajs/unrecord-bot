@@ -6,16 +6,20 @@ import leaderboard from "../commands/leaderboard";
 import restore from "../commands/restore";
 
 const prefix = Bun.env.PREFIX;
-
 export default async (message: Message) => {
+    // Discard anything sent in DMs or by a bot.
     if (message.channel.type === ChannelType.DM || message.author.bot) return;
 
+    // Leveling calculations and all.
     await leveling(message);
 
+    // Ignore every message that doesn't start with our prefix.
     if (!message.content.startsWith(prefix)) return;
 
+    // Fetch command arguments if they exist.
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
 
+    // Fetch the command name.
     const command = args.shift()?.toLowerCase();
 
     switch (command) {

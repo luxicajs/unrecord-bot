@@ -1,5 +1,7 @@
 import { EmbedBuilder, type Message } from "discord.js";
 
+// Send command
+
 export default async (message: Message) => {
     const helpEmbed = new EmbedBuilder()
         .setTitle("> :question: **Unrecord Bot Help**")

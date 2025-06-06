@@ -1,6 +1,8 @@
 import { bot } from "..";
 import { tryCatch } from "./tryCatch";
 
+// Try to fetch the user whatever means necessary.
+// This means we're going to attempt to fetch them using multiple methods.
 export default async (id: string) => {
     const guild = bot.guilds.cache.get(Bun.env.GUILD_ID);
 

@@ -1,6 +1,8 @@
 import type { Message } from "discord.js";
 import { prisma } from "..";
 import errorEmbed from "../utils/errorEmbed";
+
+// This command is used to restore a user's roles if they left the server.
 export default async (message: Message) => {
     const user = await prisma.user.findUnique({
         where: {

@@ -2,6 +2,7 @@ import { Client, Events, GatewayIntentBits } from "discord.js";
 import messageHandler from "./modules/messageCreate";
 import { PrismaClient } from "../prisma/sdk";
 
+// Initialize DB client.
 export const prisma = new PrismaClient();
 
 export const bot = new Client({
