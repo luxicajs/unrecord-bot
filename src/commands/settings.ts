@@ -24,11 +24,11 @@ export default async (message: Message, args: string[]) => {
         return message.reply({ embeds: [cardEmbed] })
     }
 
-    if (!Number.isInteger(args[0])) return errorEmbed(message, "Invalid option. Choose between preset 1-6");
+    if (!Number.isInteger(parseInt(args[0]))) return errorEmbed(message, "Invalid option. Choose between preset 1-6 [Integer Required]");
 
     const option = Number(args[0]);
 
-    if (option < 0 || option > 6) return errorEmbed(message, "Invalid option. Choose between preset 1-6");
+    if (option < 0 || option > 6) return errorEmbed(message, "Invalid option. Choose between preset 1-6 [Range exception]");
 
     await prisma.user.update({
         where: user,

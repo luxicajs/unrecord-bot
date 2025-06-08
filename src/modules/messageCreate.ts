@@ -4,6 +4,7 @@ import rank from "../commands/rank";
 import help from "../commands/help";
 import leaderboard from "../commands/leaderboard";
 import restore from "../commands/restore";
+import settings from "../commands/settings";
 
 const prefix = Bun.env.PREFIX;
 export default async (message: Message) => {
@@ -39,6 +40,9 @@ export default async (message: Message) => {
             break;
         case "restore":
             restore(message);
+            break;
+        case "card":
+            settings(message, args || []);
             break;
     }
 }
