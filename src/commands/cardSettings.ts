@@ -4,6 +4,8 @@ import errorEmbed from "../utils/errorEmbed";
 
 // I'm going to use the old system in place until I can find a better way to do this
 
+const boosterRole = "1089241269429080235";
+
 export default async (message: Message, args: string[]) => {
     const user = await prisma.user.findUnique({
         where: {
@@ -11,7 +13,7 @@ export default async (message: Message, args: string[]) => {
         }
     });
 
-    if (!user || user.level < 15) return errorEmbed(message, "You need Level 15 or above to be able to use this command.");
+    if (!user || user.level < 15 && !message.member?.roles.cache.has(boosterRole)) return errorEmbed(message, "You need Level 15 or above to be able to use this command. Alternatively, you can boost the server.");
 
     if (!args[0]) {
         const cardEmbed = new EmbedBuilder()
@@ -24,11 +26,11 @@ export default async (message: Message, args: string[]) => {
         return message.reply({ embeds: [cardEmbed] })
     }
 
-    if (!Number.isInteger(parseInt(args[0]))) return errorEmbed(message, "Invalid option. Choose between preset 1-6 [Integer Required]");
+    if (!Number.isInteger(parseInt(args[0]))) return errorEmbed(message, "Invalid option. Choose between preset 1-6");
 
     const option = Number(args[0]);
 
-    if (option < 0 || option > 6) return errorEmbed(message, "Invalid option. Choose between preset 1-6 [Range exception]");
+    if (option < 0 || option > 6) return errorEmbed(message, "Invalid option. Choose between preset 1-6");
 
     await prisma.user.update({
         where: user,
