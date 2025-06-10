@@ -13,8 +13,6 @@ export default async (message: Message, args: string[]) => {
             ? await fetchUser(args[0])
             : message.author;
 
-    console.log(author);
-
     // If the user from the argument is not found, return an error.
     if (!author) return errorEmbed(message, "User not found");
 
