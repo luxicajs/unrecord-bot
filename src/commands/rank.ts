@@ -7,11 +7,13 @@ import levelCalculate from "../modules/levelCalculate";
 
 export default async (message: Message, args: string[]) => {
     // See if there's a command argument. Maybe the user wants to see someone else's rank.
-    const author = message.mentions.users.hasAny()
-        ? message.mentions.users.first()
+    const author = message.mentions.members?.size! > 0
+        ? message.mentions.members?.first()
         : args[0]
             ? await fetchUser(args[0])
             : message.author;
+
+    console.log(author);
 
     // If the user from the argument is not found, return an error.
     if (!author) return errorEmbed(message, "User not found");
@@ -47,7 +49,7 @@ export default async (message: Message, args: string[]) => {
         maxXp: levelCalculate(entry.level),
         card: entry.card,
     });
-    
+
     // Prepare the buffer
     const attachment = new AttachmentBuilder(Buffer.from(card), {
         name: "unrecord-card.jpg",
