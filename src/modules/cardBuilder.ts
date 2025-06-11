@@ -22,7 +22,7 @@ export default async (data: Opts) => {
 
     // Fetch the background the user has set.
     const bg = await Bun.file(
-        `./src/assets/preset${data.card + 1}.png`,
+        `./src/assets/preset${data.card}.png`,
     ).arrayBuffer();
 
     // Generate the svg from "card.tsx"
