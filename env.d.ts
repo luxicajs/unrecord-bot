@@ -7,5 +7,7 @@ declare module "bun" {
         LEVELING_CHANNEL: string
         PREFIX: string
         GUILD_ID: string
+        REPORT_CHANNEL: string
+        CLIENT_ID: string
     }
 }

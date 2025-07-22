@@ -48,13 +48,13 @@ export default async (message: Message, page: number) => {
     // Page does not exist
     if (rankings.length === 0)
         return errorEmbed(message, "Page number out of bounds.");
-    
+
     // This function attempts to fetch all the users in pararrel.
     (
         await Promise.all(
             rankings.map((item, index) => embedEntry(item, index + 1, page)),
         )
-    // Add fields onto the embed
+        // Add fields onto the embed
     ).map((field) => leaderboardEmbed.addFields(field));
 
     // Typescript, my beloved. Of course it's sendable...
@@ -65,7 +65,7 @@ export default async (message: Message, page: number) => {
 
     // Set a footer to let the user know if the bot fetched cached entries or not.
     leaderboardEmbed.setFooter({
-        text: `Cache: ${timeElapsed > 10 ? "MISS" : "HIT"}. Took ${timeElapsed}ms.`,
+        text: `Cache: ${timeElapsed > 30 ? "MISS" : "HIT"}. Took ${timeElapsed}ms.`,
     });
 
     // Send the embed

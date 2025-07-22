@@ -1,7 +1,9 @@
 import { Client, Events, GatewayIntentBits } from "discord.js";
 import messageHandler from "./modules/messageCreate";
 import { PrismaClient } from "../prisma/sdk";
+import interactionCreate from "./modules/interactionCreate";
 import joinHandler from "./modules/joinHandler";
+// import "./utils/registerEvents";
 
 // Initialize DB client.
 export const prisma = new PrismaClient();
@@ -20,5 +22,6 @@ bot.on(Events.ClientReady, (client) => {
 })
     .on(Events.GuildMemberAdd, joinHandler)
     .on(Events.MessageCreate, messageHandler)
+    .on(Events.InteractionCreate, interactionCreate)
     .login(Bun.env.BOT_TOKEN);
 

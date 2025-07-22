@@ -35,6 +35,7 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 /prisma/sdk
 /prisma/dev.db
+/prisma/bot.prismadb
 /prisma/dev.db-journal
 
 /src/assets/*.png
