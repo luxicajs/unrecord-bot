@@ -80,6 +80,8 @@ export default async (message: Message) => {
             break;
     }
 
+    if (user.level <= 4) return; // If user is below level 5, don't send a level up message.
+
     if (
         (user.level + (1 % 2) === 0 && user.level + 1 !== 15) ||
         user.level + 1 !== 5
