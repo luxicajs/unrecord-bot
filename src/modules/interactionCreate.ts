@@ -18,7 +18,7 @@ export default async (interaction: Interaction) => {
             .setRequired(false)
             .setStyle(TextInputStyle.Paragraph);
 
-        // @ts-ignore fuck off
+        // @ts-ignore d.js type error, not my fault
         modal.addComponents(new ActionRowBuilder().addComponents(contextField));
 
         return await interaction.showModal(modal);
