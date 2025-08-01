@@ -9,19 +9,19 @@ import joinHandler from "./modules/joinHandler";
 export const prisma = new PrismaClient();
 
 export const bot = new Client({
-    intents: [
-        GatewayIntentBits.MessageContent,
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildMessages,
-    ],
+  intents: [
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages,
+  ],
 });
 
-bot.on(Events.ClientReady, (client) => {
+bot
+  .on(Events.ClientReady, (client) => {
     console.log(`Logged in as ${client.user.tag}. Took ${performance.now()}ms`);
-})
-    .on(Events.GuildMemberAdd, joinHandler)
-    .on(Events.MessageCreate, messageHandler)
-    .on(Events.InteractionCreate, interactionCreate)
-    .login(Bun.env.BOT_TOKEN);
-
+  })
+  .on(Events.GuildMemberAdd, joinHandler)
+  .on(Events.MessageCreate, messageHandler)
+  .on(Events.InteractionCreate, interactionCreate)
+  .login(Bun.env.BOT_TOKEN);

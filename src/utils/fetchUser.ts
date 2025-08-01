@@ -4,23 +4,23 @@ import { tryCatch } from "./tryCatch";
 // Try to fetch the user whatever means necessary.
 // This means we're going to attempt to fetch them using multiple methods.
 export default async (id: string) => {
-    const guild = bot.guilds.cache.get(Bun.env.GUILD_ID);
+  const guild = bot.guilds.cache.get(Bun.env.GUILD_ID);
 
-    if (!guild) return null;
+  if (!guild) return null;
 
-    const cached = bot.users.cache.get(id);
+  const cached = bot.users.cache.get(id);
 
-    if (cached) return cached;
+  if (cached) return cached;
 
-    const guildFetch = await tryCatch(guild.members.fetch(id));
+  const guildFetch = await tryCatch(guild.members.fetch(id));
 
-    console.log(guildFetch.data ? "Guild fetch" : "User fetch");
+  console.log(guildFetch.data ? "Guild fetch" : "User fetch");
 
-    if (guildFetch.data && !guildFetch.error) return guildFetch.data;
+  if (guildFetch.data && !guildFetch.error) return guildFetch.data;
 
-    const globalFetch = await tryCatch(bot.users.fetch(id));
+  const globalFetch = await tryCatch(bot.users.fetch(id));
 
-    if (globalFetch.data && !globalFetch.error) return globalFetch.data;
+  if (globalFetch.data && !globalFetch.error) return globalFetch.data;
 
-    return null;
+  return null;
 };
