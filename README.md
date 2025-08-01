@@ -1,9 +1,7 @@
-# Unrecord Leveling Bot v3
+# Unrecord Bot v3
 
-Currently being used at discord.gg/unrecord
+> This open-source part of the bot features the following modules:
+- Leveling
+- Message Reporting
 
-This is a new version of the leveling bot, running on cleaner code, and now it's open source!
-
-Now, it also includes: A reporting module!
-
-If you'd like me to host this in your server, you can contact me on Discord: `lucyrift`
+If you'd like me to host a version for your server, you can contact me on Discord: `lucyrift`.
